@@ -15,7 +15,7 @@ const Subscribe = () => {
           <h4 className='tophead'>
             Subscribe To Our Mail List
           </h4>
-          <form onSumbit={handleSubmit}>
+          <form onSubmit={handleSubmit}>
             <div className="flex-box">
               <div className="box">
                 <div className="form-input">
@@ -27,7 +27,7 @@ const Subscribe = () => {
                   <input type='email' placeholder='janedoe@gmail.com' required />
                 </div>
               </div>
-              <div>
+              <div className='btn-div'>
                 <button type='submit' className='button'>
                   subscribe
                 </button>

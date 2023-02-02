@@ -1,8 +1,12 @@
 import React from 'react'
 
+import LogoImg from '../assets/logo.png'
+
 const Logo = () => {
   return (
-    <div className='logo'>Logo</div>
+    <div className='logo'>
+      <img src={LogoImg} alt='logo' />
+    </div>
   )
 }
 

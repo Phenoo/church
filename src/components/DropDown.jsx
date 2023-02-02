@@ -1,57 +1,31 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { NavLink } from 'react-router-dom';
+import React, { useState } from "react";
+import { serviceDropdown } from "./NavItems";
+import { NavLink } from "react-router-dom";
+import "../styles/Dropdown.css";
 
-const DropDown = () => {
-
-  const [open, setOpen] = useState(false);
-
-  let menuRef = useRef();
-
-  useEffect(() => {
-    let handler = (e)=>{
-      if(!menuRef.current.contains(e.target)){
-        setOpen(false);
-      }      
-    };
-
-    document.addEventListener("mousedown", handler);
-    
-
-    return() =>{
-      document.removeEventListener("mousedown", handler);
-    }
-
-  });
+function Dropdown() {
+  const [dropdown, setDropdown] = useState(false);
 
   return (
-      <div className='menu-container' ref={menuRef}>
-        <div className={`menu-trigger flex ${open ? '' : ''} `} onClick={()=>{setOpen(!open)}}>
-          About
+      <ul
+        className={dropdown ? "services-submenu clicked" : "services-submenu"}
+        onClick={() => setDropdown(!dropdown)}
+      >
+        {serviceDropdown.map((item) => (
+          <li key={item.id}>
+            <NavLink
+              to={item.path}
+              className={({isActive}) => (isActive ? 'nav-active' : '') }
 
-        </div>
-
-        <div className={`dropdown-menu ${open? 'active' : 'inactive'}`} >
-          <ul  onClick={()=>{setOpen(!open)}}>
-            <DropdownItem link='global' text = {"about rcn global"}/>
-            <DropdownItem link='president' text = {"About presidents"}/>
-            <DropdownItem link='lagos' text = {"about RCN Lagos"}/>
-            <DropdownItem link='programmes'  text = {"our programmes"}/>
-            <DropdownItem link='pastors'  text = {"meet our pastors"}/>
-          </ul>
-        </div>
-      </div>
+              onClick={() => setDropdown(false)}
+          >
+            {item.title}
+          </NavLink>
+        </li>
+        )
+        )}
+      </ul>
   );
 }
 
-
-function DropdownItem(props){
-  return(
-    <li className = 'dropdownItem'>
-      <NavLink to={`/about/${props.link}`}
-        // className={({isActive}) => (isActive ? 'nav-active' : '') }
-      > {props.text} </NavLink>
-    </li>
-  );
-}
-
-export default DropDown
+export default Dropdown;

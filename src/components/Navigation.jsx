@@ -1,66 +1,50 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Logo from './Logo'
-
+import { FaBars, FaTimes } from 'react-icons/fa'
 import { NavLink } from 'react-router-dom'
-
-import Dropdown from './DropDown'
+import Dropdown from './Dropdown'
+import { navItems } from './NavItems'
 
 const Navigation = () => {
+  const [dropdown, setDropdown] = useState(false);
+  const [navbar, setNavbar] = useState(false)
   return (
     <nav id='nav'>
         <div className='space-between'>
           <Logo />
-          <div className='nav-links'>
-            <ul className=''>
-              <li>
-                <NavLink to='/'
-                    className={({isActive}) => (isActive ? 'nav-active' : '') }
+          <div className={`nav-links ${navbar ? 'show' : ''}`}>
+            <ul className='menu'>
+            {navItems.map((item) => {
+              if (item.title === "About") {
+                return (
+                  <li
+                    key={item.id}
+                    className={item.cName}
+                    onMouseEnter={() => setDropdown(true)}
+                    // onMouseLeave={() => setDropdown(false)}
+                    onClick={() => setDropdown(!dropdown)}
                   >
-                  home
-                </NavLink>
-              </li>
-              <li
+                    <NavLink to={item.path}
+                    >{item.title}</NavLink>
+                    {dropdown && <Dropdown />}
+                  </li>
+                );
+              }
+              return (
+                <li key={item.id} className={item.cName}>
+                  <NavLink to={item.path}
                     className={({isActive}) => (isActive ? 'nav-active' : '') }
-              >
-                <Dropdown />
-              </li>
-              <li>
-                <NavLink to='/sermons'
-                    className={({isActive}) => (isActive ? 'nav-active' : '') }
-                >
-                  sermons
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to='/partnership'
-                    className={({isActive}) => (isActive ? 'nav-active' : '') }
-                >
-                  partnership
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to='/events'
-                    className={({isActive}) => (isActive ? 'nav-active' : '') }
-                >
-                  events
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to='/blogs'
-                    className={({isActive}) => (isActive ? 'nav-active' : '') }
-                >
-                  blogs
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to='/donate'
-                    className={({isActive}) => (isActive ? 'nav-active' : '') }
-                >
-                  donate
-                </NavLink>
-              </li>
+                  >{item.title}</NavLink>
+                </li>
+              );
+            })}
             </ul>
           </div>
+          <button className='mobile' onClick={() => setNavbar(!navbar)}>
+                {
+                  navbar ? <FaTimes /> : <FaBars />
+                }
+              </button>
         </div>
     </nav>
   )

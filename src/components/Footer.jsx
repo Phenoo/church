@@ -10,16 +10,15 @@ const Footer = () => {
         <section>
           <div className='four-grid'>
             <div>
-              <Logo />
-              <br />
+              <div>
+                <Logo />
+              </div>
               <p>
               Location: Guest House, Plot 6A Lateef Jakande Road, Agindingbi 101212, Ikeja, Lagos State.
               </p>
-              <br />
               <p>
               Contact: +234 818 625 3251/+234 906 176 7430
               </p>
-              <br />
               <p>
               Email: info@rcnlagos.org
               </p>

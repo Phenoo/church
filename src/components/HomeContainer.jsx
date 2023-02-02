@@ -12,6 +12,7 @@ const HomeContainer = ({ title, text, subtitle, button }) => {
           <h2 className='tophead'>
             {text}
           </h2>
+          <br />
           <h4>
             {subtitle}
           </h4>

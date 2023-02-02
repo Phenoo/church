@@ -16,7 +16,7 @@ import Subscribe from '../components/Subscribe'
 const HomePage = () => {
   return (
     <>
-      <HomeContainer image={Img1} title='Psalm 37:3' text='“Trust in the LORD, and do good; dwell in the land and befriend faithfulness”' button='read more' />
+      <HomeContainer image={Img1} subtitle='Psalm 37:3' text='“Trust in the LORD, and do good; dwell in the land and befriend faithfulness”' button='read more' />
       <Offer />
       <UpcomingEvents />
       <Listen />
