@@ -1,7 +1,7 @@
 import React from 'react'
 import HomeContainer from '../components/HomeContainer'
 import SermonContainer from '../components/Sermons/SermonContainer'
-import Directory from '../components/Sermons/directory'
+import Directory from '../components/Sermons/Directory'
 
 const Sermons = () => {
   return (
